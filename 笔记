@@ -1,0 +1,158 @@
+3-1项目初始化和目录搭建（以及基本配置）
+
+unofficial python extions package
+pillow 图片上传和处理的包；
+首先处理mysql配置setting 配置database
+添加一些package 和dictory 然后将apps和extra_appsmark为sourceroot
+再在setting里面配置路径将setting所在的目录设置为根目录，将apps和extra_apps和根目录join（连接起来）
+
+
+
+db_tools 脚本处理
+
+
+
+
+
+
+
+ 组建的通信机制
+
+
+ 设计用户model
+
+django migration迁移；
+migration的原理；
+1:makemigration :就会把生成migration下的一个py文件，
+2:migrate
+
+如何修改表；
+修改表时需要先migration 在migrate
+如何运行另外一个表，这是由于django辉自动生成一个migration表，运行的时候会查看这个表是否运行过，
+要想重新运行表，需要将migration下的表中相应的字段删除；
+
+不能用migration 和 数据库中修改混用，
+
+migration 数据库的管理和迭代管理
+ueditor富文本编辑；
+
+注意在写的时候在setting中的url需要在url中设置好
+
+为什么要前后端分离
+1pc app pad
+2：spa开发模式的流行
+3：前后端开发职责不清；
+4：template不知道由谁写
+5：开发效率的问题前后端互相等待；
+6：前端配合着后端，能力受限
+7：后台开发语言和模板高度耦合，导致开发语言依赖
+
+前后端分离缺点：
+1：前后端学习门槛增加
+2：数据依赖导致文档重要性增加；
+3：前端工作量增加
+4：seo（搜索引擎）ssr搜索引擎优化排名；）
+5：后端开发迁移增加成本；
+
+restful api
+restful api 目前时前后端分离的最佳实践；是一种标准（不是框架）api的设计标准，按着它涉及就是restful api
+1：轻量，直接通过HTTP不需要额外的协议，post get put delete 关系
+2：面向资源的一幕了然，具有自解释性；
+3：数据描述简单：通过json 或者xml
+
+restapi 的理念：网络上的一切都是具体存在的资源；
+每一个uri代表一个资源
+2：客户端和服务器实现某种数据表现层
+3：通过对表现层的操作，实现资源状态的转换；
+
+4：路径就是表示（路径加上域名就是资源了）
+5：获取get /zoom/id
+6：stauscode http状态码通过状态吗普安是否操作成功
+7：过滤
+
+vue 基本概念介绍；
+1：前端工程化
+2：数据双向绑定（mvvm
+3：组件化开发
+4数据双向绑定和组件化开发增加代码重构）
+
+wue开发的几个概念
+1：webpack (不管代码怎么写都把代码转化为js文件）
+2：vue , vuex,vue-router ,axios
+3：ES babel
+4：组件之间的通信（vuex）
+4：vue-router（页面之间跳转没有请求数据库，而是通过vue-roter实现组件之间的跳转）
+5：不推荐用jquery进行form操作；
+6：axios（进行http请求）
+7：ES6的语法 ，babel（ES6的语法转化为ES5的语法）
+8：vue全家桶
+
+
+
+注意页面的组件关系和辨别有哪些组件；
+下载vue查看器查看vue组件；
+
+第五章：restapi
+
+django（cbv 基于class 的编码）面向对象的编程模式；
+商品列表页面
+
+django文档对新手不好；
+基于类的视图；
+有很多的view 不同的有不同的功能
+通用view
+在django.view.generic ListView  等等
+
+
+dumps 和dump 和loads的区别
+dumps是将json转换为str
+loads是将str转化为json
+dump是将json转换成str再存入一个文件之中需要两个参数
+格式如下：
+dump（json，file）
+
+商品的展示（自己序列化数据）通过cvb类型，类的方式再dict中展示；
+一个个填充的很麻烦；而且不能用字典填充datatime类型
+
+字段特别多的时候，，from django.forms.models import model_to_dict通过将数据转化为dict的形式
+
+通过serializes实现序列化：
+djangorestframework用serialize实现序列化
+        import json
+        from django.core  import serializers
+        json_data = serializers.serialize("json",goods)
+        json_data = json.loads(json_data) #将str文件转化成dict文件
+        from django.http import HttpResponse,JsonResponse
+        import json
+        return JsonResponse(json_data,safe=False)
+
+
+商品列表页的展示演示djangorestframework
+官方文档：
+
+如果出现utf8编码错误需要修改虚拟环境下lib/site-packages/pip/compat/__init__文件75行左右改为gbk；
+
+
+格式化返回数据；djangorestframework
+
+model serialize;
+
+Modelserializer 实现字段不需要自己一个个实现字段填充）
+
+外键会序列话为一个id
+httpcode
+常用的httpcode状态吗；
+与form机制相似；
+
+mixins 和genericview让代码更加简洁；
+
+
+generic的继承；
+分页的配置；再rest_framework 的setting下；
+传递了很多参数之后
+前端不用保存很多参数；
+
+
+自己定制分页；
+
+
